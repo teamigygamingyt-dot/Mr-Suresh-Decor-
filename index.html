@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr Suresh Decor</title>
+
+<style>
+/* Reset */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+/* Background */
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  overflow:hidden;
+  background: linear-gradient(135deg,#0a0f2c,#1a0f3c,#0a1f4c);
+}
+
+/* animated gradient */
+body::before{
+  content:"";
+  position:absolute;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle at 30% 30%, rgba(0,255,255,0.2), transparent 40%),
+              radial-gradient(circle at 70% 70%, rgba(255,0,255,0.2), transparent 40%);
+  animation: moveBg 10s linear infinite;
+}
+
+@keyframes moveBg{
+  from{transform:translate(0,0);}
+  to{transform:translate(-200px,-200px);}
+}
+
+/* grid overlay */
+.grid{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background-image:
+  linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size:40px 40px;
+}
+
+/* content */
+.content{
+  position:relative;
+  text-align:center;
+  z-index:2;
+}
+
+h1{
+  font-size:60px;
+  background:linear-gradient(90deg,cyan,magenta);
+  -webkit-background-clip:text;
+  color:transparent;
+  text-shadow:0 0 20px rgba(0,255,255,0.5);
+}
+
+p{
+  margin-top:10px;
+  font-size:20px;
+  opacity:0.9;
+}
+
+/* buttons */
+.buttons{
+  margin-top:20px;
+}
+
+button{
+  padding:12px 25px;
+  margin:10px;
+  border:none;
+  border-radius:25px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.primary{
+  background:cyan;
+  color:black;
+}
+
+.secondary{
+  background:transparent;
+  color:white;
+  border:1px solid white;
+}
+
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 15px cyan;
+}
+
+/* particles */
+.particle{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  animation: float 8s infinite linear;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<!-- particles -->
+<script>
+for(let i=0;i<20;i++){
+  let p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"%";
+  p.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(p);
+}
+</script>
+
+<div class="content">
+  <h1>Mr Suresh Decor</h1>
+  <p>Transforming Spaces with Elegance & Style</p>
+
+  <div class="buttons">
+    <button class="primary">View Gallery</button>
+    <button class="secondary">Contact Us</button>
+  </div>
+</div>
+
+</body>
+</html>
